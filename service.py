@@ -13,16 +13,16 @@ app = Flask(__name__)
 
 def update_db(remote_addr, img_name, json_pred):
     rds_db = mysql.connector.connect(
-    host=os.getenv('DB_hostname'),
-    user=os.getenv('DB_username'),
-    password=os.getenv('DB_password'),
-    database="yolov5_predictions"
+    host = os.getenv('DB_HOSTNAME'),
+    user = os.getenv('DB_USERNAME'),
+    password = os.getenv('DB_PASSWORD'),
+    database = "yolov5_predictions"
     )
 
     cur = rds_db.cursor()
 
-    sql = "INSERT INTO requests (address, img_name, json_pred) VALUES (%s, %s, %s)"
-    val = (str(remote_addr), str(image_name), str(json_pred))
+    sql = "INSERT INTO requests (Address, ImageName, JsonPredictions) VALUES (%s, %s, %s)"
+    val = (str(remote_addr), str(img_name), str(json_pred))
     cur.execute(sql, val)
 
     rds_db.commit()
@@ -47,7 +47,8 @@ def predict():
         for img in results.imgs:
             img_base64 = Image.fromarray(img)
             img_base64.save("static/image0.jpg", format="JPEG")
-            update_db(request.remote_addr, image_name, json_pred)
+            if 'DB_HOSTNAME' in os.environ and 'DB_USERNAME' in os.environ and 'DB_PASSWORD' in os.environ:
+                update_db(request.remote_addr, image_name, json_pred)
         return redirect("static/image0.jpg")
 
     return render_template("index.html")

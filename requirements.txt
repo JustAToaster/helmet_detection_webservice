@@ -4,6 +4,8 @@ pandas
 opencv-python>=4.1.2
 matplotlib
 seaborn
+ipython
+psutil
 
 Pillow
 PyYAML>=5.3.1
