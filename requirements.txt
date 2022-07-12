@@ -1,0 +1,12 @@
+flask
+numpy>=1.18.5
+pandas
+opencv-python>=4.1.2
+matplotlib
+seaborn
+
+Pillow
+PyYAML>=5.3.1
+tqdm>=4.41.0
+
+mysql-connector-python
