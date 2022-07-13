@@ -60,7 +60,7 @@ if __name__ == "__main__":
     parser.add_argument("--model", default="YCVR_big", type=str, help="Model to use: YCVR_big, YCVR_small, YCR_big, YCR_small, YCV")
     args = parser.parse_args()
     model_path = "./models/" + args.model + ".pt"
-    model = torch.hub.load('ultralytics/yolov5', 'custom', path=model_path, force_reload=True, autoshape=True)
+    model = torch.hub.load('./yolov5', 'custom', path=model_path, source='local', autoshape=True)
     model.eval()
     model.cpu()
     app.run(host="0.0.0.0", port=args.port)
