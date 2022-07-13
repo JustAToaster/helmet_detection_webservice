@@ -57,7 +57,7 @@ def predict():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Flask web app for YOLOv5")
     parser.add_argument("--port", default=32332, type=int, help="Service port")
-    parser.add_argument("--model", default="YCVR_big", type=str, help="Model to use: YCVR_big, YCVR_small, YCR_big, YCR_small, YCV")
+    parser.add_argument("--model", default="YCVR_big", type=str, help="Model to use: YCVR_big, YCVR_small, YCR_big, YCR_small, YCV.")
     args = parser.parse_args()
     model_path = "./models/" + args.model + ".pt"
     model = torch.hub.load('./yolov5', 'custom', path=model_path, source='local', autoshape=True)
