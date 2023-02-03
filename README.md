@@ -1,2 +1,2 @@
-# Labeling and detection webservice
-YOLOv5 labeling and detection web service with Flask
+# Helmet detection webservice
+YOLOv5 helmet detection web service with Flask
